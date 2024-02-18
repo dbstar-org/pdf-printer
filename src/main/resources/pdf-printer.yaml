@@ -1,0 +1,12 @@
+logging:
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(%X{requestId}){magenta} %clr(---){faint} %clr([%t]){faint} %clr(%class.%method\(%file:%L\)){cyan} %clr(:){faint} %m%n%wEx'
+  level:
+    root: "INFO"
+    org.springframework.boot.context.config.ConfigDataLoaders: "TRACE"
+    _org.springframework.web.servlet.HandlerMapping.Mappings: "DEBUG"
+
+# spring
+spring:
+  application:
+    name: pdf-printer
