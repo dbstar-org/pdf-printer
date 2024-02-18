@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.dbstarll.parent</groupId>
+        <artifactId>boot</artifactId>
+        <version>1.3.0</version>
+    </parent>
+    <groupId>io.github.dbstarll</groupId>
+    <artifactId>pdf-printer</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <description>pdf printer</description>
+    <url>https://github.com/dbstar-org/pdf-printer</url>
+
+    <scm>
+        <connection>scm:git:${project.git.git.root}</connection>
+        <developerConnection>scm:git:${project.git.web.root}</developerConnection>
+        <url>${project.git.web.master}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <project.git.project>pdf-printer</project.git.project>
+        <project.mainClass>io.github.dbstarll.pdf.printer.Starter</project.mainClass>
+        <!-- module version -->
+        <version.slf4j>1.7.36</version.slf4j>
+        <version.utils-spring-boot>1.0.7</version.utils-spring-boot>
+        <version.spring-boot>2.7.18</version.spring-boot>
+        <version.pdfbox>3.0.1</version.pdfbox>
+    </properties>
+
+    <dependencies>
+        <!-- commons utils -->
+        <dependency>
+            <groupId>io.github.dbstarll.utils</groupId>
+            <artifactId>utils-spring-boot</artifactId>
+            <version>${version.utils-spring-boot}</version>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${version.spring-boot}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${version.pdfbox}</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>site-local</id>
+            <distributionManagement>
+                <site>
+                    <id>local</id>
+                    <url>${project.site.root.project}</url>
+                </site>
+            </distributionManagement>
+        </profile>
+    </profiles>
+</project>
