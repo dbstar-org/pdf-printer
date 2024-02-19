@@ -17,7 +17,12 @@ public class Starter {
     private static final Logger LOGGER = LoggerFactory.getLogger(Starter.class);
 
     public static void main(String[] args) throws IOException, PrinterException {
-        final File file = new File("/Users/dbstar/Documents/双面打印测试.pdf");
+        if (args.length != 1) {
+            System.err.println("Usage: pdf-printer <input pdf file>");
+            System.exit(1);
+        }
+
+        final File file = new File(args[0]);
         LOGGER.info("input: {}", file);
 
         try (PDDocument document = Loader.loadPDF(file)) {
