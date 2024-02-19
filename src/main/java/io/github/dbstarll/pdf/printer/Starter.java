@@ -54,6 +54,7 @@ public class Starter {
     private static void order(final PDDocument document) {
         final PDPageTree pages = document.getPages();
         final int total = pages.getCount();
+        final PDRectangle mediaBox = pages.get(0).getMediaBox();
         int i = 0;
         while (total - i >= 4) {
             final PDPage first = pages.get(i);
@@ -63,7 +64,7 @@ public class Starter {
             i += 4;
         }
         if (i < total) {
-            pages.insertBefore(new PDPage(), pages.get(i));
+            pages.insertBefore(new PDPage(mediaBox), pages.get(i));
         }
     }
 
