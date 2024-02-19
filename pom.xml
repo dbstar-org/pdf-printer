@@ -25,14 +25,26 @@
         <project.git.project>pdf-printer</project.git.project>
         <project.mainClass>io.github.dbstarll.pdf.printer.Starter</project.mainClass>
         <!-- module version -->
+        <version.logback>1.3.14</version.logback>
         <version.pdfbox>3.0.1</version.pdfbox>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${version.logback}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>${version.pdfbox}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>

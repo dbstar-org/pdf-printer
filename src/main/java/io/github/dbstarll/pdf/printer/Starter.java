@@ -5,6 +5,8 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.printing.PDFPageable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
@@ -12,8 +14,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class Starter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Starter.class);
+
     public static void main(String[] args) throws IOException, PrinterException {
         final File file = new File("/Users/dbstar/Documents/双面打印测试.pdf");
+        LOGGER.info("input: {}", file);
 
         try (PDDocument document = Loader.loadPDF(file)) {
             try (PDDocument next = new PDDocument()) {
@@ -47,7 +52,7 @@ public class Starter {
     }
 
     private static void print(final PDDocument doc) throws PrinterException {
-        PrinterJob job = PrinterJob.getPrinterJob();
+        final PrinterJob job = PrinterJob.getPrinterJob();
         job.setPageable(new PDFPageable(doc));
         if (job.printDialog()) {
             job.print();
